@@ -1,10 +1,12 @@
-const CACHE_NAME = "projeto-atlas-v3";
+const CACHE_NAME = "projeto-atlas-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./style.css",
+  "./mvp-updates.css",
   "./script.js",
   "./atlas-updates.js",
+  "./mvp-logic.js",
   "./manifest.json",
   "./icon-192.svg",
   "./icon-512.svg"
