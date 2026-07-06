@@ -318,7 +318,7 @@ function estimateCapacity(source=state){
 
 function collectTrainingMetrics(training,metrics,weight){
   Object.entries(training||{}).forEach(([rawDay,type])=>{
-    if(type==='none'||!type)return;
+    if(rawDay==='football'||type==='none'||!type)return;
     const day=weekDayMap[rawDay]||rawDay;
     const profile=type==='minimum'?minimumProfile:(dayProfile[day]||minimumProfile);
     metrics.pushupsSet=Math.max(metrics.pushupsSet,(profile.pushupsSet||0)*weight);
@@ -440,7 +440,7 @@ function buildHunterChallenge(mode){
   const rusty=mode==='rusty'||isMvpRusty();
   const target=rusty?rankKeyMvp(getRank(Number(state.rusty.maxRankXp||state.hunterRankXp||0)).name):nextHunterRankMvp();
   const rankIndex=Math.max(0,rankKeysMvp.indexOf(target||'E'));
-  const intensity=rusty?.78:.86;
+  const intensity=rusty ? .78 : .86;
   const rankMultiplier=1+rankIndex*.08;
   const objectives=[
     {key:'pushups',label:'Flexoes totais',target:clamp(Math.round(capacity.pushups*intensity*rankMultiplier),10,120),unit:' reps',basis:capacity.pushups+' estimadas'},
