@@ -1,9 +1,10 @@
-const CACHE_NAME = "projeto-atlas-v2";
+const CACHE_NAME = "projeto-atlas-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./style.css",
   "./script.js",
+  "./atlas-updates.js",
   "./manifest.json",
   "./icon-192.svg",
   "./icon-512.svg"
