@@ -24,29 +24,29 @@
       <div class="hero-grid"><article class="panel"><p class="eyebrow">Status atual</p><div class="rank-row"><div><h2 id="currentRank"></h2><p id="rankHint"></p></div><div class="level-badge"><span>Level</span><strong id="currentLevel"></strong></div></div><div class="xp-line"><span id="xpText"></span><span id="totalXpText"></span></div><div class="progress-track"><div id="xpBar" class="progress-fill"></div></div></article><article class="panel"><p class="eyebrow">Perfil</p><div class="profile-grid"><span>23 anos</span><span>1,75m</span><span>66kg inicial</span><span>Meta 70-75kg</span></div><p>Foco em postura, estetica atletica, hipertrofia, futebol, prevencao de lesoes, forca e mobilidade.</p></article></div>
       <div id="rustyBanner"></div>
       <div class="dashboard-grid"><section class="panel"><div class="section-title"><h2>Missoes da semana</h2><button id="resetWeekButton" class="ghost-button">Limpar semana</button></div><div id="weeklyMissions" class="mission-list"></div></section><section class="panel"><div class="section-title"><h2>Atributos</h2><span class="pill">Atlas Core</span></div><div id="attributesList" class="attribute-list"></div></section></div>
+      <section class="panel recent-actions-panel"><div class="section-title"><h2>Acoes recentes</h2><span class="pill">Desfazer XP</span></div><div id="recentActions" class="action-list"></div></section>
       <section class="panel"><div class="section-title"><h2>Conquistas</h2><span id="achievementCount" class="pill"></span></div><div id="achievementsGrid" class="achievement-grid"></div></section>
     </section>
     <section id="treinos" class="tab-panel"><div class="section-title page-title"><div><p class="eyebrow">8 semanas</p><h2>Treinos da Temporada 1</h2></div><span class="pill">30 min ideal / 10 min minimo</span></div><div id="workoutsGrid" class="workout-grid"></div><article class="panel minimum-panel"><h2>Treino minimo</h2><p>2 rounds: 10 flexoes, 15 agachamentos, 20s prancha, 10 afundos, 10 supermans.</p></article></section>
     <section id="exame" class="tab-panel">
       <article id="hunterIntro" class="hunter-hero">
-        <p class="eyebrow">Evento quinzenal</p>
+        <p class="eyebrow">Desafio proporcional</p>
         <h2>EXAME HUNTER</h2>
-        <p>Seu corpo sera avaliado.</p>
-        <div class="hunter-meta"><span>Tempo estimado</span><strong>15 minutos</strong></div>
-        <button id="startHunterExam" class="primary-button" type="button">Iniciar Exame</button>
+        <p>O desafio e calculado pelo seu historico recente.</p>
+        <div class="hunter-meta"><span>Time cap estimado</span><strong id="hunterIntroTime">7-10 min</strong></div>
+        <button id="startHunterExam" class="primary-button" type="button">Gerar Exame</button>
       </article>
       <form id="hunterExamForm" class="panel form-panel hunter-form" hidden>
-        <div class="section-title"><div><p class="eyebrow">Avaliacao fisica</p><h2>Registrar Exame Hunter</h2></div><span id="hunterTargetRank" class="pill"></span></div>
-        <div class="form-grid"><label>Peso (kg)<input type="number" id="hunterWeight" min="40" max="140" step="0.1" required></label><label>Flexoes maximas<input type="number" id="hunterPushups" min="0" required></label><label>Barras maximas<input type="number" id="hunterPullups" min="0" required></label></div>
-        <div class="form-grid"><label>Prancha maxima (seg)<input type="number" id="hunterPlank" min="0" required></label><label>Wall Sit (seg)<input type="number" id="hunterWallSit" min="0" required></label><label>Mobilidade (seg)<input type="number" id="hunterMobility" min="0" required></label></div>
-        <label>Observacoes<textarea id="hunterNotes" rows="4" placeholder="Tecnica, energia, dor, amplitude, controle..."></textarea></label>
-        <div class="form-actions"><button type="submit" class="primary-button">Finalizar Exame</button><button type="button" id="cancelHunterExam" class="ghost-button">Cancelar</button></div>
+        <div class="section-title"><div><p class="eyebrow">Desafio ativo</p><h2>Exame Hunter</h2></div><span id="hunterTargetRank" class="pill"></span></div>
+        <div id="hunterChallenge" class="hunter-challenge"></div>
+        <p class="hunter-note">Pode quebrar em quantas series quiser. O objetivo e concluir tudo dentro do tempo sem precisar testar maximos absolutos.</p>
+        <div class="form-actions"><button type="submit" class="primary-button">Conclui dentro do tempo</button><button type="button" id="cancelHunterExam" class="ghost-button">Cancelar</button></div>
       </form>
       <div id="hunterResult"></div>
       <section class="panel hunter-log-panel"><div class="section-title"><h2>Historico Hunter</h2><span id="hunterExamCount" class="pill"></span></div><div id="hunterExamList" class="history-list"></div></section>
     </section>
     <section id="boss" class="tab-panel"><section id="bossFightPanel" class="boss-screen"></section></section>
-    <section id="registro" class="tab-panel"><div class="section-title page-title"><div><p class="eyebrow">Check-in semanal</p><h2>Registrar evolucao</h2></div><span class="pill">Salvo no navegador</span></div><form id="weeklyForm" class="panel form-panel"><div class="form-grid"><label>Semana<input type="date" id="weekDate" required></label><label>Peso (kg)<input type="number" id="weight" min="40" max="140" step="0.1" placeholder="66.0" required></label><label>Futebol<select id="footballRating"><option value="0">Nao joguei</option><option value="1">1 - ruim</option><option value="2">2 - abaixo</option><option value="3">3 - ok</option><option value="4">4 - bom</option><option value="5">5 - excelente</option></select></label></div><fieldset><legend>Treinos feitos</legend><div id="trainingInputs" class="training-inputs"></div></fieldset><div class="form-grid"><label>Flexoes maximas<input type="number" id="maxPushups" min="0"></label><label>Barras maximas<input type="number" id="maxPullups" min="0"></label><label>Prancha maxima (seg)<input type="number" id="maxPlank" min="0"></label></div><fieldset><legend>Dores ou alertas</legend><div class="checks-row"><label><input type="checkbox" id="kneePain"> Dor no joelho</label><label><input type="checkbox" id="backPain"> Dor lombar</label><label><input type="checkbox" id="shoulderPain"> Dor no ombro</label></div></fieldset><label>Observacoes<textarea id="notes" rows="4" placeholder="Energia, sono, dificuldade, gols, sensacoes..."></textarea></label><div class="form-actions"><button type="submit" class="primary-button">Salvar registro</button><button type="button" id="clearDataButton" class="danger-button">Apagar dados</button></div></form></section>
+    <section id="registro" class="tab-panel"><div class="section-title page-title"><div><p class="eyebrow">Check-in semanal</p><h2>Registrar evolucao</h2></div><span class="pill">Salvo no navegador</span></div><form id="weeklyForm" class="panel form-panel"><div class="form-grid"><label>Semana<input type="date" id="weekDate" required></label><label>Peso (kg)<input type="number" id="weight" min="40" max="140" step="0.1" placeholder="66.0" required></label><label>Futebol<select id="footballRating"><option value="0">Nao joguei</option><option value="1">1 - ruim</option><option value="2">2 - abaixo</option><option value="3">3 - ok</option><option value="4">4 - bom</option><option value="5">5 - excelente</option></select></label></div><fieldset><legend>Treinos feitos</legend><div id="trainingInputs" class="training-inputs"></div></fieldset><fieldset><legend>Dores ou alertas</legend><div class="checks-row"><label><input type="checkbox" id="kneePain"> Dor no joelho</label><label><input type="checkbox" id="backPain"> Dor lombar</label><label><input type="checkbox" id="shoulderPain"> Dor no ombro</label></div></fieldset><div class="form-actions"><button type="submit" class="primary-button">Salvar registro</button><button type="button" id="clearDataButton" class="danger-button">Apagar dados</button></div></form></section>
     <section id="historico" class="tab-panel"><div class="section-title page-title"><div><p class="eyebrow">Linha do tempo</p><h2>Historico e evolucao</h2></div><span id="historyCount" class="pill"></span></div><div id="evolutionGrid" class="evolution-grid"></div><div id="historyList" class="history-list"></div></section>
     <section id="ranks" class="tab-panel"><div class="section-title page-title"><div><p class="eyebrow">Progressao tangivel</p><h2>Ranks do Projeto Atlas</h2></div></div><div id="ranksGrid" class="ranks-grid"></div></section>
   </main>
@@ -57,6 +57,7 @@
       <div id="exerciseModalContent"></div>
     </article>
   </div>
+  <div id="toastHost" class="toast-host" aria-live="polite"></div>
   <footer><p>Projeto Atlas - treino em casa, consistencia e evolucao fisica sem backend.</p></footer>
   <script src="script.js"></script>
   <script src="atlas-updates.js"></script>
